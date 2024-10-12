@@ -1,0 +1,29 @@
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+# Sample data for candidates
+candidates = {
+    "1": {"name": "Alice", "votes": 0},
+    "2": {"name": "Bob", "votes": 0},
+}
+
+# Route to get candidate details
+@app.route('/candidates', methods=['GET'])
+def get_candidates():
+    return jsonify(candidates)
+
+# Route to cast a vote
+@app.route('/vote', methods=['POST'])
+def vote():
+    data = request.json
+    candidate_id = data.get('candidate_id')
+
+    if candidate_id in candidates:
+        candidates[candidate_id]['votes'] += 1
+        return jsonify({"message": "Vote casted successfully!"}), 201
+    else:
+        return jsonify({"message": "Candidate not found!"}), 404
+
+if __name__ == '__main__':
+    app.run(debug=True)
