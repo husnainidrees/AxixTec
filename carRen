@@ -1,0 +1,40 @@
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)  # Enable CORS
+
+# Sample data (in place of a database)
+cars = [
+    {"id": 1, "model": "Toyota Corolla", "available": True},
+    {"id": 2, "model": "Honda Civic", "available": True},
+]
+
+# GET method to list available cars
+@app.route('/cars', methods=['GET'])
+def get_cars():
+    available_cars = [car for car in cars if car["available"]]
+    return jsonify(available_cars)
+
+# POST method to rent a car
+@app.route('/rent', methods=['POST'])
+def rent_car():
+    car_id = request.json.get('id')
+    for car in cars:
+        if car['id'] == car_id and car['available']:
+            car['available'] = False
+            return jsonify({"message": f"You have rented {car['model']}."}), 200
+    return jsonify({"message": "Car not available or not found."}), 404
+
+# POST method to return a rented car
+@app.route('/return', methods=['POST'])
+def return_car():
+    car_id = request.json.get('id')
+    for car in cars:
+        if car['id'] == car_id and not car['available']:
+            car['available'] = True
+            return jsonify({"message": f"You have returned {car['model']}."}), 200
+    return jsonify({"message": "Car not found or was not rented."}), 404
+
+if __name__ == '__main__':
+    app.run(debug=True)
