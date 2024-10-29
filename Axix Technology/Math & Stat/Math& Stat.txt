@@ -1,0 +1,13 @@
+Vector and Linear
+eigon value and eigon vector
+PCA
+ Calculus
+
+derivative gradient descent gradient boasting
+newton method random vector hypothesis testing 
+
+Baisian algorithm(equation)
+
+
+
+https://www.cuemath.com/algebra/vector-equation/

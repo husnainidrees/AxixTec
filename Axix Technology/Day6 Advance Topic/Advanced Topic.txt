@@ -1,0 +1,11 @@
+Hum ny Saturday k Advanced Topic jese k 
+
+decorator
+Generator
+Context Manager
+Threading Pool
+Multi Threading
+Asynchrounes
+Eventloop
+
+

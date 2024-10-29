@@ -1,0 +1,38 @@
+# Dictionary of parentheses
+Dic = {1: "(", 2: ")", 3: "{", 4: "}"}
+
+# User input string
+ch = str(input("Enter a string of parentheses: "))
+
+# Stack to keep track of opening parentheses
+stack = []
+
+# Dictionary to match closing with opening parentheses
+matching_paren = {")": "(", "}": "{"}
+
+# Flag to track validity
+is_valid = True
+
+# Loop through each character in the input string
+for char in ch:
+    # If the character is an opening parenthesis, push it to the stack
+    if char in Dic.values() and (char == '(' or char == '{'):
+        stack.append(char)
+    # If the character is a closing parenthesis
+    elif char in Dic.values() and (char == ')' or char == '}'):
+        # Check if the stack is empty or if the top of the stack doesn't match
+        if not stack or stack[-1] != matching_paren[char]:
+            is_valid = False
+            break
+        else:
+            stack.pop()  # Pop the matching opening parenthesis
+
+# After processing, if the stack is not empty, parentheses are invalid
+if stack:
+    is_valid = False
+
+# Output result
+if is_valid:
+    print("The parentheses are valid.")
+else:
+    print("The parentheses are invalid.")

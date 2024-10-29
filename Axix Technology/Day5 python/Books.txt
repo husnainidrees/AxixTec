@@ -1,0 +1,9 @@
+Programming Challenges by Steven Skiena
+
+Programming Logic and Design by Joyce Farrell
+
+Starting Out With Programming Logic and Design by Tony Gaddis
+
+Introduction to Logic Programming by Michael Genesereth and Vinay K. Chaudhri
+
+Computing with Logic: Logic Programming with Prolog by David Maier and David S. Warren
